@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ForceField name="Exp6 water: Errington models " version="0.0.1">
+  <FFMetaData electrostatics14Scale="0.0" nonBonded14Scale="0.0" combiningRule="lorentz">
+    <Units energy="kcal/mol" mass="amu" charge="elementary_charge" distance="angstrom"/>
+  </FFMetaData>
+  <AtomTypes expression="epsilon*alpha/(alpha-6) * (6/alpha*exp(alpha*(1-r/Rmin)) - (Rmin/r)**6)">
+    <ParametersUnitDef parameter="epsilon" unit="K"/>
+    <ParametersUnitDef parameter="Rmin" unit="angstrom"/>
+    <ParametersUnitDef parameter="alpha" unit="dimensionless"/>
+    <AtomType name="OW" atomclass="OW" element="O" charge="-0.7374" mass="15.99940" definition="[O;X2](H)(H)"  description="water oxygen" doi="10.1021/jp982068v">
+      <Parameters>
+        <Parameter name="epsilon" value="159.78"/>
+        <Parameter name="Rmin" value="3.646842"/>
+        <Parameter name="alpha" value="12"/>
+      </Parameters>
+    </AtomType>
+    <AtomType name="HW" atomclass="HW" element="H" charge="0.3687" mass="1.00800" definition="[H;X1][O;X2](H)" description="water hydrogen">
+      <Parameters>
+        <Parameter name="epsilon" value="0"/>
+        <Parameter name="Rmin" value="0.1"/>
+        <Parameter name="alpha" value="12"/>
+      </Parameters>
+    </AtomType>
+  </AtomTypes>
+  <BondTypes expression="k * (r-r_eq)**2">
+    <ParametersUnitDef parameter="r_eq" unit="angstrom"/>
+    <ParametersUnitDef parameter="k" unit="K/angstrom**2"/>
+    <BondType name="BondType_Harmonic_HW_OW" class1="HW" class2="OW">
+      <Parameters>
+        <Parameter name="k" value="999999999"/>
+        <Parameter name="r_eq" value="1.0668"/>
+      </Parameters>
+    </BondType>
+  </BondTypes>
+  <AngleTypes expression="k * (theta - theta_eq)**2">
+    <ParametersUnitDef parameter="theta_eq" unit="degree"/>
+    <ParametersUnitDef parameter="k" unit="K/radian**2"/>
+    <AngleType name="AngleType_Harmonic_H_O_H" class1="HW" class2="OW" class3="HW">
+      <Parameters>
+        <Parameter name="k" value="999999999999"/>
+        <Parameter name="theta_eq" value="109.5"/>
+      </Parameters>
+    </AngleType>
+  </AngleTypes>
+</ForceField>
