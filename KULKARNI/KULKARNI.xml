@@ -1,0 +1,20 @@
+<ForceField version="0.0.1" name="OPC water" >
+ <AtomTypes>
+   <Type name="OW" class="OW" element="O" mass="15.999" def="[O;X3](H)(H)(_LP)" desc="O in  " doi="10.1021/acs.jctc.0c00301"/>
+   <Type name="HW" class="HW" element="H" mass="1.00800" def="[H;X1][O;X3](H)(_LP)" desc="H  " doi="10.1021/acs.jctc.0c00301"/>
+   <Type name="_LP" class="_LP" element="_LP" mass="0.0000" def="[_LP;X1][O;X3](H)(H)" desc="Lone Pair mass is 1 in mol2 file " doi="10.1021/acs.jctc.0c00301"/>
+ </AtomTypes>
+ <HarmonicBondForce>
+   <Bond class1="OW" class2="HW" length="0.11423 " k="502080.0"/>
+   <Bond class1="OW" class2="_LP" length="0.02026" k="753120.0"/>
+ </HarmonicBondForce>
+ <HarmonicAngleForce>
+	 <Angle class1="HW" class2="OW" class3="HW" angle="1.825265332"  k="627.6"/>
+   <Angle class1="HW" class2="OW" class3="_LP" angle="0.912632666" k="418.4"/>
+ </HarmonicAngleForce>
+ <NonbondedForce coulomb14scale="0.0" lj14scale="0.0">
+  <Atom type="OW" charge="0" sigma="0.30843" epsilon="1.68941565938256"/>
+  <Atom type="HW" charge="0.4123" sigma="0" epsilon="0.0"/>
+  <Atom type="_LP" charge="-0.8264" sigma="0" epsilon="0.0"/>
+ </NonbondedForce>
+</ForceField>
