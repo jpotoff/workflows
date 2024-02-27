@@ -1,0 +1,17 @@
+<ForceField version="0.0.1" name="TIP3P-ML" >
+ <AtomTypes>
+   <Type name="OW" class="OW" element="O" mass="15.99940" def="[O;X2](H)(H)" desc="O in TIP3P-ML " doi="10.1021/acs.jpcc.9b06348"/>
+   <Type name="HW" class="HW" element="H" mass="1.00800" def="[H;X1][O;X2](H)" desc="H in TIP3P-ML " doi="10.1021/acs.jpcc.9b06348"/>
+ </AtomTypes>
+ <HarmonicBondForce>
+   <Bond class1="OW" class2="HW" length="0.09572" k="502416.0"/>
+ </HarmonicBondForce>
+ <HarmonicAngleForce>
+   <Angle class1="HW" class2="OW" class3="HW" angle="1.82421813418" k="628.02"/>
+ </HarmonicAngleForce>
+ <NonbondedForce coulomb14scale="0.5" lj14scale="0.5">
+  <Atom type="OW" charge="-0.860756" sigma="0.3091042" epsilon="1.485519192"/>
+  <Atom type="HW" charge="0.430378" sigma="0.066409" epsilon="0.056337498"/>
+ </NonbondedForce>
+</ForceField>
+
