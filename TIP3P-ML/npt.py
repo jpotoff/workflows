@@ -546,7 +546,7 @@ def build_psf_pdb_ff_gomc_conf(job):
     # TIP3P-ML cut at 7.5 A
     Rcut_ang = 7.5 * u.angstrom
     Rcut_low_ang = 0.7 * u.angstrom
-    LRC = True
+    LRC = False
     Exclude = "1-4"
 
     # MC move ratios
