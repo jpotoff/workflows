@@ -1,0 +1,22 @@
+#box lengths
+box_0_length_ang: 25
+box_1_length_ang: 100
+
+# of reservior molecules
+box_1_molecules: 1000
+
+# Common Cutoffs (in Angstroms)
+Hard_cutoff: 1.0
+LJ_cutoff: 12.0
+Long_range_corrections: True
+Real_space_cutoff: 12.0
+
+
+#Electrostatic parameters  
+Electrostatic_bool: True
+Electrostatic_Method: "PME"
+PMESplineOrder: 8
+PMEGridSpacing: 1
+PMERefreshFreq: 10000
+Ewald_tol: 0.00001
+
