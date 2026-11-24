@@ -1,0 +1,66 @@
+# Parameters that are typically constant from run to run.
+# Anything that changes with temperature (box sizes, number of molecules,
+# RcutCoulomb, ...) belongs in init.py as part of the statepoint.
+
+#GOMC executable location (the bin folder containing GOMC_CPU_GEMC, GOMC_GPU_GEMC, ...)
+gomc_binary_path: "~/GOMC/CBMC/GOMC/bin"
+
+#force field
+#If openff_forcefield is set (a SMIRNOFF .offxml, e.g. "openff-2.3.0.offxml"), the GMSO XML
+#in forcefield_file is generated from OpenFF Interchange by openff_to_gmso_xml.py the first
+#time a job builds its GOMC files (if the file does not exist yet). Delete that XML to force
+#regeneration. Set openff_forcefield to null to use a hand-built forcefield_file instead
+#(e.g. "../../openff-2.3.0.xml").
+openff_forcefield: "openff-2.3.0.offxml"
+#python of the conda env with openff-toolkit + openff-interchange (runs openff_to_gmso_xml.py)
+openff_python: "~/miniconda3/envs/openff/bin/python"
+#force field file (relative to the job directory)
+forcefield_file: "../../openff-2.3.0_C6A.xml"
+
+#molecule definition
+#if molecule_file is set it is used, otherwise the molecule is built from smiles
+molecule_file: null
+smiles: "CCCCCC"
+#residue name
+resname: "C6A"
+#prefix used for GOMC output files (e.g. C2A_nvt, C2A_equil, C2A_prod)
+output_prefix: "C6A"
+
+#run lengths
+nvt_equilibration_steps: 1000000
+equilibration_sim_steps: 25000000
+production_sim_steps: 25000000
+
+console_frequency: 10000
+pressure_calc_frequency: 1000
+block_ave_output_frequency: 5000000
+coordinate_output_frequency: 1000000
+coordinate_output_frequency_nvt: 1000000
+
+equilibration_steps_nvt: 100000
+equilibration_steps: 1000000
+adjust_steps: 1000
+
+# Common Cutoffs (in Angstroms)
+Hard_cutoff: 1.0
+LJ_cutoff: 9.0
+Long_range_corrections: True
+Exclude: "1-3"
+
+#Electrostatic parameters
+Electrostatic_bool: True
+Ewald_bool: True
+Ewald_tol: 0.00001
+
+#CBMC Parameters (CBMC_LookAhead/CBMC_LookAheadAng/CBMC_LookAheadDih are only passed to
+#the mosdef_gomc writer when not null; if null, the writer default is used: 0 / 1 / 0)
+CBMC_First: 12
+CBMC_Nth: 10
+CBMC_Ang: 4
+CBMC_Dih: 10
+CBMC_LookAhead: 2
+CBMC_LookAheadAng: 1
+CBMC_LookAheadDih: 10
+
+#mosdef_gomc Charmm writer option (only passed when True)
+use_template_ff: True

@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ForceField name="openforcefield-2.3.0" version="0.0.1">
+  <FFMetaData electrostatics14Scale="0.833333" nonBonded14Scale="0.5" combiningRule="lorentz">
+    <Units energy="kcal/mol" mass="amu" charge="elementary_charge" distance="angstrom"/>
+  </FFMetaData>
+  <AtomTypes expression="(n/(n-m)) * (n/m)**(m/(n-m)) * epsilon * ((sigma/r)**n - (sigma/r)**m)">
+    <ParametersUnitDef parameter="epsilon" unit="kcal/mol"/>
+    <ParametersUnitDef parameter="sigma" unit="angstrom"/>
+    <ParametersUnitDef parameter="n" unit="dimensionless"/>
+    <ParametersUnitDef parameter="m" unit="dimensionless"/>
+    <AtomType name="C_methane" atomclass="C" element="C" charge="-0.108660" mass="12.01078" definition="[C;X4](H)(H)(H)H" description="sp3 carbon bonded to 4 hydrogen" doi="openforcefield-2.3.0" overrides="">
+      <Parameters>
+        <Parameter name="epsilon" value="0.120570"/>
+        <Parameter name="sigma" value="3.387971"/>
+        <Parameter name="n" value="12"/>
+        <Parameter name="m" value="6"/>
+      </Parameters>
+    </AtomType>
+    <AtomType name="C_terminal" atomclass="C" element="C" charge="-0.100638" mass="12.01078" definition="[C;X4](C)(H)(H)H" description="terminal (CH3) carbon" doi="openforcefield-2.3.0" overrides="">
+      <Parameters>
+        <Parameter name="epsilon" value="0.120570"/>
+        <Parameter name="sigma" value="3.387971"/>
+        <Parameter name="n" value="12"/>
+        <Parameter name="m" value="6"/>
+      </Parameters>
+    </AtomType>
+    <AtomType name="C_internal" atomclass="C" element="C" charge="-0.080792" mass="12.01078" definition="[C;X4](C)(C)(H)H" description="medial (CH2) carbon" doi="openforcefield-2.3.0" overrides="">
+      <Parameters>
+        <Parameter name="epsilon" value="0.120570"/>
+        <Parameter name="sigma" value="3.387971"/>
+        <Parameter name="n" value="12"/>
+        <Parameter name="m" value="6"/>
+      </Parameters>
+    </AtomType>
+    <AtomType name="C_cross" atomclass="C" element="C" charge="-0.044547" mass="12.01078" definition="[C;X4](C)(C)(C)H" description="isopropyl carbon (C3CH)" doi="openforcefield-2.3.0" overrides="">
+      <Parameters>
+        <Parameter name="epsilon" value="0.120570"/>
+        <Parameter name="sigma" value="3.387971"/>
+        <Parameter name="n" value="12"/>
+        <Parameter name="m" value="6"/>
+      </Parameters>
+    </AtomType>
+    <AtomType name="C_doublecross" atomclass="C" element="C" charge="0.000000" mass="12.01078" definition="[C;X4](C)(C)(C)C" description="neopentane carbon (CC4)" doi="openforcefield-2.3.0" overrides="">
+      <Parameters>
+        <Parameter name="epsilon" value="0.120570"/>
+        <Parameter name="sigma" value="3.387971"/>
+        <Parameter name="n" value="12"/>
+        <Parameter name="m" value="6"/>
+      </Parameters>
+    </AtomType>
+    <AtomType name="H_methane" atomclass="H" element="H" charge="0.027165" mass="1.007947" definition="H[C;X4](H)(H)H" description="H bonded to terminal (CH4) carbon" doi="openforcefield-2.3.0" overrides="">
+      <Parameters>
+        <Parameter name="epsilon" value="0.013366"/>
+        <Parameter name="sigma" value="2.663934"/>
+        <Parameter name="n" value="12"/>
+        <Parameter name="m" value="6"/>
+      </Parameters>
+    </AtomType>
+    <AtomType name="H_terminal" atomclass="H" element="H" charge="0.033546" mass="1.007947" definition="H[C;X4](H)(H)C" description="H bonded to terminal (CH3) carbon" doi="openforcefield-2.3.0" overrides="">
+      <Parameters>
+        <Parameter name="epsilon" value="0.013366"/>
+        <Parameter name="sigma" value="2.663934"/>
+        <Parameter name="n" value="12"/>
+        <Parameter name="m" value="6"/>
+      </Parameters>
+    </AtomType>
+    <AtomType name="H_middle" atomclass="H" element="H" charge="0.040396" mass="1.007947" definition="H[C;X4](H)(C)C" description="H bonded to internal (CH2) carbon" doi="openforcefield-2.3.0" overrides="">
+      <Parameters>
+        <Parameter name="epsilon" value="0.013366"/>
+        <Parameter name="sigma" value="2.663934"/>
+        <Parameter name="n" value="12"/>
+        <Parameter name="m" value="6"/>
+      </Parameters>
+    </AtomType>
+    <AtomType name="H_cross" atomclass="H" element="H" charge="0.044547" mass="1.007947" definition="H[C;X4](C)(C)C" description="H bonded to isopropyl (CH) carbon" doi="openforcefield-2.3.0" overrides="">
+      <Parameters>
+        <Parameter name="epsilon" value="0.013366"/>
+        <Parameter name="sigma" value="2.663934"/>
+        <Parameter name="n" value="12"/>
+        <Parameter name="m" value="6"/>
+      </Parameters>
+    </AtomType>
+  </AtomTypes>
+  <BondTypes expression="k/2 * (r-r_eq)**2">
+    <ParametersUnitDef parameter="r_eq" unit="angstrom"/>
+    <ParametersUnitDef parameter="k" unit="kcal/mol/angstrom**2"/>
+    <BondType name="BondType_Harmonic_C_C" class1="C" class2="C">
+      <Parameters>
+        <Parameter name="k" value="457.925820"/>
+        <Parameter name="r_eq" value="1.539984"/> <!-- <r> from OpenMM Sage 2.3.0 hexane NPT, 298.15 K, 1 bar (Sage r0 = 1.525970) -->
+      </Parameters>
+    </BondType>
+    <BondType name="BondType_Harmonic_C_H" class1="C" class2="H">
+      <Parameters>
+        <Parameter name="k" value="680.766445"/>
+        <Parameter name="r_eq" value="1.092446"/>
+      </Parameters>
+    </BondType>
+  </BondTypes>
+  <AngleTypes expression="k/2 * (theta - theta_eq)**2">
+    <ParametersUnitDef parameter="theta_eq" unit="degree"/>
+    <ParametersUnitDef parameter="k" unit="kcal/mol/radian**2"/>
+    <AngleType name="AngleType_Harmonic_C_C_C" class1="C" class2="C" class3="C">
+      <Parameters>
+        <Parameter name="k" value="99.692152"/>
+        <Parameter name="theta_eq" value="109.650556"/>
+      </Parameters>
+    </AngleType>
+    <AngleType name="AngleType_Harmonic_C_C_H" class1="C" class2="C" class3="H">
+      <Parameters>
+        <Parameter name="k" value="99.692152"/>
+        <Parameter name="theta_eq" value="109.650556"/>
+      </Parameters>
+    </AngleType>
+    <AngleType name="AngleType_Harmonic_H_C_H" class1="H" class2="C" class3="H">
+      <Parameters>
+        <Parameter name="k" value="39.431910"/>
+        <Parameter name="theta_eq" value="108.005001"/>
+      </Parameters>
+    </AngleType>
+  </AngleTypes>
+  <DihedralTypes expression="k * (1 + cos(n * phi - phi_eq))">
+    <ParametersUnitDef parameter="k" unit="kcal/mol"/>
+    <ParametersUnitDef parameter="n" unit="dimensionless"/>
+    <ParametersUnitDef parameter="phi_eq" unit="degree"/>
+    <DihedralType name="DihedralType_Periodic_Proper_C_C_C_C" class1="C" class2="C" class3="C" class4="C">
+      <Parameters>
+        <Parameter name="n">
+          <Value>1</Value>
+          <Value>2</Value>
+          <Value>3</Value>
+        </Parameter>
+        <Parameter name="k">
+          <Value>0.591246</Value>
+          <Value>0.122905</Value>
+          <Value>0.311013</Value>
+        </Parameter>
+        <Parameter name="phi_eq">
+          <Value>180</Value>
+          <Value>180</Value>
+          <Value>0</Value>
+        </Parameter>
+      </Parameters>
+    </DihedralType>
+    <DihedralType name="DihedralType_Periodic_Proper_C_C_C_H" class1="C" class2="C" class3="C" class4="H">
+      <Parameters>
+        <Parameter name="n">
+          <Value>3</Value>
+        </Parameter>
+        <Parameter name="k">
+          <Value>0.132642</Value>
+        </Parameter>
+        <Parameter name="phi_eq">
+          <Value>0</Value>
+        </Parameter>
+      </Parameters>
+    </DihedralType>
+    <DihedralType name="DihedralType_Periodic_Proper_H_C_C_H" class1="H" class2="C" class3="C" class4="H">
+      <Parameters>
+        <Parameter name="n">
+          <Value>3</Value>
+        </Parameter>
+        <Parameter name="k">
+          <Value>0.239209</Value>
+        </Parameter>
+        <Parameter name="phi_eq">
+          <Value>0</Value>
+        </Parameter>
+      </Parameters>
+    </DihedralType>
+  </DihedralTypes>
+</ForceField>
